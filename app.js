@@ -25,11 +25,8 @@ const csv="\uFEFF"+rows.map(a=>a.map(v=>`"${String(v).replaceAll('"','""')}"`).j
 render();
 const params = new URLSearchParams(window.location.search);
 const toolFromUrl = params.get("tool");
-
 if (toolFromUrl) {
   $("issueToolId").value = toolFromUrl;
-  $("returnToolId").value = toolFromUrl;
 
   msg("issueMessage", "Инструмент считан с NFC: " + toolFromUrl, true);
-  msg("returnMessage", "Инструмент считан с NFC: " + toolFromUrl, true);
 }
