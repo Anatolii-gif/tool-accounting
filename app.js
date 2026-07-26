@@ -23,16 +23,13 @@ $("clearBtn").onclick=()=>{if(confirm("Удалить всю историю?")){
 $("exportBtn").onclick=()=>{const rows=[["Инструмент","Кто взял","Выдан","Возвращён","Статус"],...load().map(r=>[r.toolId,r.employee,fmt(r.issuedAt),r.returnedAt?fmt(r.returnedAt):"",r.status==="not_returned"?"Не возвращён":"Возвращён"])];
 const csv="\uFEFF"+rows.map(a=>a.map(v=>`"${String(v).replaceAll('"','""')}"`).join(";")).join("\n");const b=new Blob([csv],{type:"text/csv"}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download="tool-history.csv";a.click();URL.revokeObjectURL(u)}
 render();
-// Берём номер инструмента из ссылки вида ?tool=000001
 const params = new URLSearchParams(window.location.search);
 const toolFromUrl = params.get("tool");
 
 if (toolFromUrl) {
-  const toolInputs = document.querySelectorAll(
-    'input[placeholder="Номер инструмента"]'
-  );
+  $("issueToolId").value = toolFromUrl;
+  $("returnToolId").value = toolFromUrl;
 
-  toolInputs.forEach((input) => {
-    input.value = toolFromUrl;
-  });
+  msg("issueMessage", "Инструмент считан с NFC: " + toolFromUrl, true);
+  msg("returnMessage", "Инструмент считан с NFC: " + toolFromUrl, true);
 }
