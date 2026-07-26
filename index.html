@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Учёт инструмента</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Учёт инструмента</h1>
+  <button id="exportBtn">Экспорт CSV</button>
+</header>
+
+<main>
+  <section>
+    <h2>Выдать инструмент</h2>
+    <input id="employee" placeholder="Кто взял">
+    <input id="issueToolId" placeholder="Номер инструмента">
+    <button id="scanIssueBtn">Сканировать NFC</button>
+    <input id="photo" type="file" accept="image/*" capture="environment">
+    <img id="preview" hidden>
+    <button id="issueBtn">Выдать</button>
+    <p id="issueMessage"></p>
+  </section>
+
+  <section>
+    <h2>Вернуть инструмент</h2>
+    <input id="returnToolId" placeholder="Номер инструмента">
+    <button id="scanReturnBtn">Сканировать NFC</button>
+    <button id="returnBtn">Вернуть</button>
+    <p id="returnMessage"></p>
+  </section>
+
+  <section>
+    <h2>Не возвращено: <span id="activeCount">0</span></h2>
+    <div id="activeList"></div>
+  </section>
+
+  <section>
+    <h2>История</h2>
+    <button id="clearBtn">Очистить</button>
+    <div id="historyList"></div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
